@@ -3,8 +3,15 @@
   stored here.
 */
 
-const STORAGE_KEY = "SCOTTS:STORAGE_KEY";
+const STORAGE_KEY = "THE:STORAGE_KEY";
 
 export function addUsernameToBrowser(username) {
-  return localstorage.getItem(STORAGE_KEY).then(result => console.log(result));
+  // set username as a property of the object stored at STORAGE_KEY.
+  localStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      username
+    })
+  );
+  return username;
 }
