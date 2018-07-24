@@ -3,6 +3,14 @@ import { connect } from "react-redux";
 import { handleFetchingDocuments } from "../actions/documents";
 import { MainWrapper, Heading, LinksWrapper } from "./SharedComponents";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Board from "./Board";
+
+const DashboardWrapper = styled.div`
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  padding: 0 10px;
+`;
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -38,9 +46,10 @@ class Dashboard extends Component {
 
     // Show Dashboard with Documents
     return (
-      <MainWrapper>
+      <DashboardWrapper>
         <Heading>You have {_documents.length} documents.</Heading>
-      </MainWrapper>
+        <Board documents={documents} />
+      </DashboardWrapper>
     );
   }
 }
