@@ -1,5 +1,5 @@
 import {
-  FETCH_USERNAME_SUCCESS,
+  FETCH_DOCUMENTS_SUCCESS,
   FETCH_DOCUMENTS_FAIL,
   FETCH_DOCUMENTS
 } from "../actions/documents";
@@ -18,7 +18,7 @@ export default function documents(state = initialState, action) {
         error: null,
         isFetching: true
       };
-    case FETCH_USERNAME_SUCCESS:
+    case FETCH_DOCUMENTS_SUCCESS:
       return {
         ...state,
         isFetching: false,

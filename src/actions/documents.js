@@ -12,7 +12,7 @@ function fetchingDocuments() {
 
 function fetchDocumentsSuccess(documents) {
   return {
-    type: FETCH_USERNAME_SUCCESS,
+    type: FETCH_DOCUMENTS_SUCCESS,
     documents
   };
 }
