@@ -18,3 +18,16 @@ export const LinksWrapper = styled.div`
   justify-content: space-evenly;
   align-items: flex-end;
 `;
+
+export const CardWrapper = styled.div`
+  background: white;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: thin;
+  border-color: #ced6e0;
+  -moz-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
+`;
