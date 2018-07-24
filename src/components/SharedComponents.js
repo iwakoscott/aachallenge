@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const MainWrapper = styled.div`
   height: 100vh;
@@ -11,6 +11,11 @@ export const MainWrapper = styled.div`
 
 export const Heading = styled.h1`
   text-align: center;
+  ${props =>
+    props.color &&
+    css`
+      color: ${props.color};
+    `};
 `;
 
 export const SubHeading = styled.h3`
