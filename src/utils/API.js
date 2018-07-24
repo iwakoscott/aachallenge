@@ -3,6 +3,8 @@
   stored here.
 */
 
+// ======================= LOCALSTORAGE =======================
+
 const STORAGE_KEY = "THE:STORAGE_KEY";
 
 export function fetchUsername() {
@@ -23,4 +25,12 @@ export function addUsernameToBrowser(username) {
 
 export function resetStorageUsername() {
   localStorage.removeItem(STORAGE_KEY);
+}
+
+// ======================= aachallenge BACKEND API =======================
+export function saveDocument(document) {
+  return fetch("https://aachallengeone.now.sh/update", {
+    method: "POST",
+    body: JSON.stringify(document)
+  });
 }
