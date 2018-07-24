@@ -29,7 +29,9 @@ export function resetStorageUsername() {
 
 // ======================= aachallenge BACKEND API =======================
 export function getAllDocuments() {
-  return fetch("https://aachallengeone.now.sh/read");
+  return fetch("https://aachallengeone.now.sh/read").then(response =>
+    response.json()
+  );
 }
 
 export function saveDocument(document) {
