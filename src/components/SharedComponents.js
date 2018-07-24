@@ -14,6 +14,7 @@ export const Heading = styled.h1`
 `;
 
 export const SubHeading = styled.h3`
+  color: #8395a7;
   text-align: left;
 `;
 
@@ -35,4 +36,18 @@ export const CardWrapper = styled.div`
   -webkit-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
+  &:hover {
+    -moz-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
+  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const MutedMiniText = styled.p`
+  color: grey;
+  font-size: 10px;
+  font-style: italic;
 `;
