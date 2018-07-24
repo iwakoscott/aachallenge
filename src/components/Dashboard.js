@@ -22,6 +22,7 @@ class Dashboard extends Component {
     }
 
     if (documents.length === 0) {
+      // No documents found
       return (
         <MainWrapper>
           <Heading>
@@ -35,6 +36,7 @@ class Dashboard extends Component {
       );
     }
 
+    // Show Dashboard with Documents
     return (
       <MainWrapper>
         <Heading>You have {_documents.length} documents.</Heading>
