@@ -1,9 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { getUsername } from "../actions/user";
+import { connect } from "react-redux";
 import Form from "./Form";
 import Dashboard from "./Dashboard";
 
 class App extends Component {
+
+  componentDidMount() {
+    // persist logged in user on refresh
+    this.props.dispatch(getUsername());
+  }
+
   render() {
     return (
       <Router>
@@ -16,4 +24,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
