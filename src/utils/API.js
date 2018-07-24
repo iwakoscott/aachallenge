@@ -5,6 +5,11 @@
 
 const STORAGE_KEY = "THE:STORAGE_KEY";
 
+export function fetchUsername() {
+  const storage = localStorage.getItem(STORAGE_KEY);
+  return JSON.parse(storage);
+}
+
 export function addUsernameToBrowser(username) {
   // set username as a property of the object stored at STORAGE_KEY.
   localStorage.setItem(
@@ -14,4 +19,8 @@ export function addUsernameToBrowser(username) {
     })
   );
   return username;
-} // addUsernameToBrowser
+}
+
+export function resetStorageUsername() {
+  localStorage.removeItem(STORAGE_KEY);
+}

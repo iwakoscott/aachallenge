@@ -1,15 +1,20 @@
-import { ADD_USERNAME_TO_BROWSER } from "../actions/user";
+import { FETCH_USERNAME_SUCCESS, RESET_USERNAME } from "../actions/user";
 
 const initialState = {
-  username: ""
+  username: null
 };
 
 export default function user(state = initialState, action) {
   switch (action.type) {
-    case ADD_USERNAME_TO_BROWSER:
+    case FETCH_USERNAME_SUCCESS:
       return {
         ...state,
         username: action.username
+      };
+    case RESET_USERNAME:
+      return {
+        ...state,
+        username: null
       };
     default:
       return state;
