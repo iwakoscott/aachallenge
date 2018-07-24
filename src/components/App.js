@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Form from "./Form";
 import Dashboard from "./Dashboard";
 import PrivateRoute from "./PrivateRoute";
+import NotFound from "./NotFound";
 
 class App extends Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Form} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <Route component={NotFound} />
         </Switch>
       </Router>
     );
