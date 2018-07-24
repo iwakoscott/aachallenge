@@ -13,6 +13,10 @@ export const Heading = styled.h1`
   text-align: center;
 `;
 
+export const SubHeading = styled.h3`
+  text-align: left;
+`;
+
 export const LinksWrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
