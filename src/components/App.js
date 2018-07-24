@@ -4,11 +4,11 @@ import { getUsername } from "../actions/user";
 import { connect } from "react-redux";
 import Form from "./Form";
 import Dashboard from "./Dashboard";
+import PrivateRoute from "./PrivateRoute";
 
 class App extends Component {
-
   componentDidMount() {
-    // persist logged in user on refresh
+    // persist logged-in user on refresh
     this.props.dispatch(getUsername());
   }
 
@@ -17,7 +17,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Form} />
-          <Route path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
     );
