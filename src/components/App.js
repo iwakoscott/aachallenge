@@ -18,7 +18,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" component={Form} />
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
       </Router>

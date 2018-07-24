@@ -48,7 +48,7 @@ class Dashboard extends Component {
     return (
       <DashboardWrapper>
         <Heading>You have {_documents.length} documents.</Heading>
-        <Board documents={documents} />
+        <Board documents={documents} location={this.props.location} />
       </DashboardWrapper>
     );
   }
