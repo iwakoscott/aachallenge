@@ -14,6 +14,7 @@ const MainWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2px;
 `;
 
 const Heading = styled.h1`
@@ -59,7 +60,14 @@ class Form extends Component {
                 👋
               </span>
             </Heading>
-            <form onSubmit={this.onSubmit}>
+            <form
+              onSubmit={this.onSubmit}
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
               <input
                 type="text"
                 value={this.state.username}
