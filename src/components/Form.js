@@ -7,25 +7,7 @@ import {
   handleResetUsername
 } from "../actions/user";
 import { Link } from "react-router-dom";
-
-const MainWrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2px;
-`;
-
-const Heading = styled.h1`
-  text-align: center;
-`;
-
-const LinksWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-end;
-`;
+import { MainWrapper, Heading, LinksWrapper } from "./SharedComponents";
 
 class Form extends Component {
   state = {
