@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { handleFetchingDocuments } from "../actions/documents";
 import { MainWrapper, Heading, LinksWrapper, Button } from "./SharedComponents";
 import FaPlus from "react-icons/lib/fa/plus";
+import FaArrowLeft from "react-icons/lib/fa/arrow-left";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Board from "./Board";
@@ -20,6 +21,10 @@ class Dashboard extends Component {
 
   newDocument = () => {
     this.props.history.push(`${this.props.location.pathname}/new`);
+  };
+
+  goBack = () => {
+    this.props.history.push("/");
   };
 
   render() {
@@ -60,6 +65,9 @@ class Dashboard extends Component {
           onClick={this.newDocument}
         >
           <FaPlus size={30} color="white" />
+        </Button>
+        <Button bottomLeft backgroundColor="#F79F1F" onClick={this.goBack}>
+          <FaArrowLeft size={30} color="white" />
         </Button>
       </DashboardWrapper>
     );
