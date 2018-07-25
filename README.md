@@ -36,7 +36,7 @@ Our product owner has written the following specs:
 
 1.  Collect a username from the User when they first land on the site and store it on their browser. ☑️
 2.  Get the list of all documents in the database from the backend and show it to all users. ☑️
-3.  Allow a user to create their own document. ⬜️
+3.  Allow a user to create their own document. ☑️
 4.  Allow a user to edit a document. ⬜️
 
 ## Nice to haves
