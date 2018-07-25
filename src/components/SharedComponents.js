@@ -62,6 +62,11 @@ export const MutedMiniText = styled.p`
 export const Button = styled.button`
   cursor: pointer;
   ${props =>
+    props.disabled &&
+    css`
+      opacity: 0.4;
+    `}
+  ${props =>
     props.bottomRight &&
     css`
       bottom: 0;

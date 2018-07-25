@@ -64,6 +64,8 @@ class NewDocument extends Component {
 
   goBack = () => this.props.history.push("/dashboard");
 
+  isDisabled = () => this.state.title === "" || this.state.content === "";
+
   render() {
     const { title, content } = this.state;
 
@@ -81,7 +83,12 @@ class NewDocument extends Component {
           onChange={e => this.handleTextChange(e, "content")}
           value={this.state.content}
         />
-        <Button type="submit" bottomRight backgroundColor="#1289A7">
+        <Button
+          disabled={this.isDisabled()}
+          type="submit"
+          bottomRight
+          backgroundColor="#1289A7"
+        >
           <FaFloppy size={30} color="white" />
         </Button>
         <Button
