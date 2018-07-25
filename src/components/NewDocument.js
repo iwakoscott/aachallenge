@@ -4,6 +4,8 @@ import styled from "styled-components";
 import { Button } from "./SharedComponents";
 import FaArrowLeft from "react-icons/lib/fa/arrow-left";
 import FaFloppy from "react-icons/lib/fa/floppy-o";
+import slugify from "slugify";
+import { handleSaveDocument } from "../actions/documents";
 
 const TextArea = styled.textarea`
   -webkit-border-radius: 0;
@@ -58,8 +60,16 @@ class NewDocument extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    alert(`Submitted!`);
-    console.log(this.state);
+    const { title, content } = this.state;
+    const { username, dispatch, history } = this.props;
+    const rawData = {
+      title,
+      content,
+      username
+    };
+
+    dispatch(handleSaveDocument(rawData));
+    history.push("/dashboard");
   };
 
   goBack = () => this.props.history.push("/dashboard");
@@ -104,4 +114,10 @@ class NewDocument extends Component {
   }
 }
 
-export default connect()(NewDocument);
+function mapStateToProps({ user }) {
+  return {
+    username: user.username
+  };
+}
+
+export default connect(mapStateToProps)(NewDocument);
