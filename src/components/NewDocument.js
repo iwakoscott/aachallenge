@@ -100,6 +100,7 @@ class NewDocument extends Component {
         <TitleTextArea
           type="text"
           placeholder="Title..."
+          disabled={this.props.editMode}
           onChange={e => this.handleTextChange(e, "title")}
           value={this.state.title}
         />
