@@ -54,7 +54,11 @@ class Dashboard extends Component {
       <DashboardWrapper>
         <Heading>You have {_documents.length} documents.</Heading>
         <Board documents={documents} location={this.props.location} />
-        <Button backgroundColor="#e74c3c" onClick={this.newDocument}>
+        <Button
+          bottomRight
+          backgroundColor="#e74c3c"
+          onClick={this.newDocument}
+        >
           <FaPlus size={30} color="white" />
         </Button>
       </DashboardWrapper>
