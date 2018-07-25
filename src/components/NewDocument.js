@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { Button } from "./SharedComponents";
 import FaArrowLeft from "react-icons/lib/fa/arrow-left";
 import FaFloppy from "react-icons/lib/fa/floppy-o";
-import slugify from "slugify";
 import { handleSaveDocument } from "../actions/documents";
 import PropTypes from "prop-types";
 import { withAlert } from "react-alert";
@@ -78,7 +77,7 @@ class NewDocument extends Component {
   onSubmit = e => {
     e.preventDefault();
     const { title, content } = this.state;
-    const { username, dispatch, history } = this.props;
+    const { username, dispatch } = this.props;
     const rawData = {
       title,
       content,
@@ -107,13 +106,13 @@ class NewDocument extends Component {
           placeholder="Title..."
           disabled={this.props.editMode}
           onChange={e => this.handleTextChange(e, "title")}
-          value={this.state.title}
+          value={title}
         />
         <TextArea
           type="text"
           placeholder="Roses are red, Violets are blue..."
           onChange={e => this.handleTextChange(e, "content")}
-          value={this.state.content}
+          value={content}
         />
         <Button
           disabled={this.isDisabled()}

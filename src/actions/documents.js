@@ -35,13 +35,6 @@ function saveDocumentSuccess(document) {
   };
 }
 
-function saveDocumentFail(error) {
-  return {
-    type: SAVE_DOCUMENT_FAIL,
-    error
-  };
-}
-
 function savingDocument() {
   // for the sake of clearing error messages from the store
   return {

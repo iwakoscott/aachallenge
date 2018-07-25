@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handleFetchingDocuments } from "../actions/documents";
-import { MainWrapper, Heading, LinksWrapper, Button } from "./SharedComponents";
+import { MainWrapper, Heading, Button } from "./SharedComponents";
 import FaPlus from "react-icons/lib/fa/plus";
 import FaArrowLeft from "react-icons/lib/fa/arrow-left";
 import { Link } from "react-router-dom";
