@@ -17,6 +17,8 @@ _I've created branches for each step of the v1 requirements:_
 
 [Master Branch](https://github.com/iwakoscott/aachallenge/tree/master)
 
+*I was not able to implement real-time editing. Unfortunately, I am not familiar with Web Sockets to complete this bonus requirement.*
+
 <hr />
 
 ## Provided Rubric
