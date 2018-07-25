@@ -4,9 +4,9 @@ export const FETCH_DOCUMENTS = "FETCH_DOCUMENTS";
 export const FETCH_DOCUMENTS_SUCCESS = "FETCH_DOCUMENTS_SUCCESS";
 export const FETCH_DOCUMENTS_FAIL = "FETCH_DOCUMENTS_FAIL";
 
-export const ADD_DOCUMENT = "ADD_DOCUMENT";
-export const ADD_DOCUMENT_SUCCESS = "ADD_DOCUMENT_SUCCESS";
-export const ADD_DOCUMENT_FAIL = "ADD_DOCUMENT_FAIL";
+export const SAVE_DOCUMENT = "SAVE_DOCUMENT";
+export const SAVE_DOCUMENT_SUCCESS = "SAVE_DOCUMENT_SUCCESS";
+export const SAVE_DOCUMENT_FAIL = "SAVE_DOCUMENT_FAIL";
 
 function fetchingDocuments() {
   return {
@@ -30,14 +30,14 @@ function fetchDocumentsFail(error) {
 
 function saveDocumentSuccess(document) {
   return {
-    type: ADD_DOCUMENT_SUCCESS,
+    type: SAVE_DOCUMENT_SUCCESS,
     document
   };
 }
 
 function saveDocumentFail(error) {
   return {
-    type: ADD_DOCUMENT_FAIL,
+    type: SAVE_DOCUMENT_FAIL,
     error
   };
 }
@@ -45,15 +45,42 @@ function saveDocumentFail(error) {
 function savingDocument() {
   // for the sake of clearing error messages from the store
   return {
-    type: ADD_DOCUMENT
+    type: SAVE_DOCUMENT
   };
 }
 
 export function handleSaveDocument(document) {
-  return dispatch => {
+  return (dispatch, getState) => {
     dispatch(savingDocument()); // for the sake of clearing error messages in our store
     saveDocument(document)
-      .then(result => dispatch(saveDocumentSuccess(result)))
+      .then(result => {
+        const [slug] = Object.keys(result);
+        const { user, documents } = getState();
+        const documentUpdates = result[slug];
+        const { username } = user;
+        const { documents: _documents } = documents;
+        const originalDoc = _documents[slug];
+
+        const objectToDispatch =
+          typeof originalDoc !== "undefined"
+            ? {
+                [slug]: {
+                  ...originalDoc,
+                  ...documentUpdates,
+                  owners: originalDoc.owners.includes(username)
+                    ? originalDoc.owners
+                    : [...originalDoc.owners, username]
+                }
+              }
+            : {
+                [slug]: {
+                  ...documentUpdates,
+                  owners: [username]
+                }
+              };
+
+        dispatch(saveDocumentSuccess(objectToDispatch));
+      })
       .catch(() => dispatch(saveDocumentFail(`Error adding document!`)));
   };
 }

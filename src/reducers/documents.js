@@ -2,9 +2,9 @@ import {
   FETCH_DOCUMENTS_SUCCESS,
   FETCH_DOCUMENTS_FAIL,
   FETCH_DOCUMENTS,
-  ADD_DOCUMENT_SUCCESS,
-  ADD_DOCUMENT_FAIL,
-  ADD_DOCUMENT
+  SAVE_DOCUMENT_SUCCESS,
+  SAVE_DOCUMENT_FAIL,
+  SAVE_DOCUMENT
 } from "../actions/documents";
 
 const initialState = {
@@ -33,12 +33,12 @@ export default function documents(state = initialState, action) {
         isFetching: false,
         error: action.error
       };
-    case ADD_DOCUMENT:
+    case SAVE_DOCUMENT:
       return {
         ...state,
         error: null
       };
-    case ADD_DOCUMENT_SUCCESS:
+    case SAVE_DOCUMENT_SUCCESS:
       return {
         ...state,
         documents: {
@@ -46,7 +46,7 @@ export default function documents(state = initialState, action) {
           ...action.document
         }
       };
-    case ADD_DOCUMENT_FAIL:
+    case SAVE_DOCUMENT_FAIL:
       return {
         ...state,
         error: action.error
