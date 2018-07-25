@@ -7,6 +7,16 @@ It is pretty simple to get this app up and running!
 3.  run `npm install` or `yarn install` to download dependencies.
 4.  After downloading dependencies, run `npm start` or `yarn start` to run the app on a development server.
 
+_I've created branches for each step of the v1 requirements:_
+
+0.  [Step 0](https://github.com/iwakoscott/aachallenge/tree/SetUpRedux) - Setting up Redux
+1.  [Step 1](https://github.com/iwakoscott/aachallenge/tree/MainUsernameForm) - Build landing page to get username from user.
+1.  [Step 2](https://github.com/iwakoscott/aachallenge/tree/DisplayDocumentsToUser) - Build dashboard to display "owned" documents from provided Backend API.
+1.  [Step 3](https://github.com/iwakoscott/aachallenge/tree/CreateDocument) - Build page to create new documents.
+1.  [Step 4](https://github.com/iwakoscott/aachallenge/tree/EditDocument) - Add functionality to add edit documents.
+
+[Master Branch](https://github.com/iwakoscott/aachallenge/tree/master)
+
 <hr />
 
 ## Provided Rubric
