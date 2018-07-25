@@ -44,12 +44,12 @@ export function saveDocument({ title, content, username }) {
   return new Promise((resolve, reject) => {
     fetch(`https://aachallengeone.now.sh/read/${encodedTitle}`).then(
       response => {
-        // Document exists
         if (response.ok) {
-          // Document exists
+          // Document exists reject promise with document from API.
           reject(response.json());
         } else {
-          // Document does not already exists!
+          // Document does not already exists! resolve with a new document
+          // object to be added to the store and pushed to our server.
           resolve({
             [encodedTitle]: {
               owners: [username],

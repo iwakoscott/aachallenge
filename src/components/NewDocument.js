@@ -85,8 +85,12 @@ class NewDocument extends Component {
       username
     };
 
-    dispatch(handleSaveDocument(rawData));
-    this.props.alert.show("Saved!");
+    dispatch(
+      handleSaveDocument(rawData, {
+        error: () => this.props.alert.show("Oops! Something went wrong!"),
+        success: () => this.props.alert.show("👍 Saved!")
+      })
+    );
   };
 
   goBack = () => this.props.history.push("/dashboard");

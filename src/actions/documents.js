@@ -49,7 +49,7 @@ function savingDocument() {
   };
 }
 
-export function handleSaveDocument(document) {
+export function handleSaveDocument(document, { error, success }) {
   return (dispatch, getState) => {
     dispatch(savingDocument()); // for the sake of clearing error messages in our store
 
@@ -59,8 +59,8 @@ export function handleSaveDocument(document) {
     const { username } = getState().user;
     const encodedTitle = encodeURI(document.title);
 
-    saveDocument(document)
-      .then(doc => dispatch(saveDocumentSuccess(doc)))
+    saveDocument(document) // attempt to save document
+      .then(doc => dispatch(saveDocumentSuccess(doc))) // document doesn't exist on server
       .catch(response =>
         response.then(doc =>
           dispatch(
@@ -71,12 +71,12 @@ export function handleSaveDocument(document) {
                   ? doc.owners
                   : [...doc.owners, username],
                 lastChangeBy: username,
-                content: doc.content
+                content: document.content
               }
             })
           )
         )
-      )
+      ) // document does exists on server. Merge updated document with existing document
       .finally(() => {
         fetch(`https://aachallengeone.now.sh/update/${encodedTitle}`, {
           method: "POST",
@@ -88,8 +88,14 @@ export function handleSaveDocument(document) {
             issuer: username,
             content: document.content
           })
+        }).then(response => {
+          if (response.ok) {
+            success();
+          } else {
+            error();
+          }
         });
-      });
+      }); // finally push the new changes (both new document or old documents w/ updates)  to server
   };
 }
 
