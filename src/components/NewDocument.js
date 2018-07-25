@@ -7,6 +7,7 @@ import FaFloppy from "react-icons/lib/fa/floppy-o";
 import slugify from "slugify";
 import { handleSaveDocument } from "../actions/documents";
 import PropTypes from "prop-types";
+import { withAlert } from "react-alert";
 
 const TextArea = styled.textarea`
   -webkit-border-radius: 0;
@@ -85,6 +86,7 @@ class NewDocument extends Component {
     };
 
     dispatch(handleSaveDocument(rawData));
+    this.props.alert.show("Saved!");
   };
 
   goBack = () => this.props.history.push("/dashboard");
@@ -141,4 +143,4 @@ function mapStateToProps({ user, documents }) {
   };
 }
 
-export default connect(mapStateToProps)(NewDocument);
+export default connect(mapStateToProps)(withAlert(NewDocument));

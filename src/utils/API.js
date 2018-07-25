@@ -41,7 +41,6 @@ export function saveDocument({ title, content, username }) {
   };
 
   const encodedTitle = encodeURI(title);
-  alert(encodedTitle);
   return new Promise((resolve, reject) => {
     fetch(`https://aachallengeone.now.sh/read/${encodedTitle}`).then(
       response => {
