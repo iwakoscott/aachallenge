@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { unslug } from "../utils/helper";
 import {
   CardWrapper,
   Heading,
@@ -25,14 +24,14 @@ Board.propTypes = {
 export default function Board({ documents, location }) {
   return (
     <GridWrapper>
-      {Object.entries(documents).map(([slug, doc]) => (
+      {Object.entries(documents).map(([encodedTitle, doc]) => (
         <Link
-          to={`${location.pathname}/edit/${slug}`}
-          key={slug}
+          to={`${location.pathname}/edit/${encodedTitle}`}
+          key={encodedTitle}
           style={{ textDecoration: "none" }}
         >
           <CardWrapper>
-            <Heading color="black">{unslug(slug)}</Heading>
+            <Heading color="black">{decodeURI(encodedTitle)}</Heading>
             <div>
               <SubHeading>Owners</SubHeading>
               <ul style={{ listStyle: "none", color: "black" }}>

@@ -21,7 +21,7 @@ class App extends Component {
           <Route exact path="/" component={Form} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute
-            path="/dashboard/edit/:slug"
+            path="/dashboard/edit/:docURI"
             editMode={true}
             component={NewDocument}
           />

@@ -7,7 +7,6 @@ import FaFloppy from "react-icons/lib/fa/floppy-o";
 import slugify from "slugify";
 import { handleSaveDocument } from "../actions/documents";
 import PropTypes from "prop-types";
-import { unslug } from "../utils/helper";
 
 const TextArea = styled.textarea`
   -webkit-border-radius: 0;
@@ -57,12 +56,13 @@ class NewDocument extends Component {
   componentDidMount() {
     if (this.props.editMode) {
       // if we are in editMode
-      const { slug } = this.props.match.params;
-      const { content } = this.props.documents[slug];
-      const unslugged = unslug(slug);
+      const { docURI } = this.props.match.params;
+      const encodedTitle = encodeURI(docURI);
+      const { content } = this.props.documents[encodedTitle];
+      const title = decodeURI(encodedTitle);
 
       this.setState({
-        title: unslugged,
+        title,
         content
       });
     }
