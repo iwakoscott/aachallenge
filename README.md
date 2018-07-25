@@ -1,3 +1,16 @@
+# Name: Satoshi Scott Iwako
+
+It is pretty simple to get this app up and running!
+
+1.  Download or clone my repo at `https://github.com/iwakoscott/aachallenge.git`i.e. run `git clone https://github.com/iwakoscott/aachallenge.git` or downloading the repo as a .zip at `https://github.com/iwakoscott/aachallenge/archive/master.zip`.
+2.  Navigate to the cloned repo by running `cd` into the repo.
+3.  run `npm install` or `yarn install` to download dependencies.
+4.  After downloading dependencies, run `npm start` or `yarn start` to run the app on a development server.
+
+<hr />
+
+## Provided Rubric
+
 # **a/A** Challenge 1
 
 _It's great to have you here!_ At AppAcademy we look to find and make brilliant engineers and we think you could do well as an engineer at a/A so we decided to extend a fun challenge over to see how you tackle it.
