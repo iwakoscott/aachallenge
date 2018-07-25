@@ -6,6 +6,7 @@ import Form from "./Form";
 import Dashboard from "./Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import NotFound from "./NotFound";
+import NewDocument from "./NewDocument";
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Form} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/dashboard/new" component={NewDocument} />
           <Route component={NotFound} />
         </Switch>
       </Router>
