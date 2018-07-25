@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleFetchingDocuments } from "../actions/documents";
-import { MainWrapper, Heading, LinksWrapper } from "./SharedComponents";
+import { MainWrapper, Heading, LinksWrapper, Button } from "./SharedComponents";
 import FaPlus from "react-icons/lib/fa/plus";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -11,35 +11,6 @@ const DashboardWrapper = styled.div`
   display: grid;
   grid-template-rows: min-content 1fr 85px;
   padding: 0 10px;
-`;
-
-const AddEntryButton = styled.button`
-  position: fixed;
-  cursor: pointer;
-  bottom: 0;
-  right: 0;
-  height: 90px;
-  width: 90px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  border-radius: 100%;
-  background-color: #e74c3c;
-  outline: none;
-  -moz-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
-  box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
-  &:hover {
-    -moz-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
-    -webkit-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
-    box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  @media (max-width: 400px) {
-    height: 75px;
-    width: 75px;
-  }
 `;
 
 class Dashboard extends Component {
@@ -83,9 +54,9 @@ class Dashboard extends Component {
       <DashboardWrapper>
         <Heading>You have {_documents.length} documents.</Heading>
         <Board documents={documents} location={this.props.location} />
-        <AddEntryButton onClick={this.newDocument}>
+        <Button backgroundColor="#e74c3c" onClick={this.newDocument}>
           <FaPlus size={30} color="white" />
-        </AddEntryButton>
+        </Button>
       </DashboardWrapper>
     );
   }

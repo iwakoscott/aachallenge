@@ -58,3 +58,51 @@ export const MutedMiniText = styled.p`
   font-size: 10px;
   font-style: italic;
 `;
+
+export const Button = styled.button`
+  cursor: pointer;
+  ${props =>
+    props.bottomRight &&
+    css`
+      bottom: 0;
+      right: 0;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    `} ${props =>
+  props.bottomLeft &&
+  css`
+    bottom: 0;
+    left: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  `}
+  ${props =>
+    (props.bottomLeft || props.bottomRight) &&
+    css`
+      position: fixed;
+    `}
+  height: 90px;
+  width: 90px;
+
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  ${props =>
+    props.backgroundColor &&
+    css`
+      background-color: ${props.backgroundColor};
+    `} outline: none;
+  -moz-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 15px 0 rgba(0, 0, 0, 0.2);
+  &:hover {
+    -moz-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 27px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 400px) {
+    height: 75px;
+    width: 75px;
+  }
+`;
