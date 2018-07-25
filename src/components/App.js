@@ -20,7 +20,16 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Form} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute path="/dashboard/new" component={NewDocument} />
+          <PrivateRoute
+            path="/dashboard/edit/:slug"
+            editMode={true}
+            component={NewDocument}
+          />
+          <PrivateRoute
+            path="/dashboard/new"
+            editMode={false}
+            component={NewDocument}
+          />
           <Route component={NotFound} />
         </Switch>
       </Router>

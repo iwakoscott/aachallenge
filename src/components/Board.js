@@ -27,7 +27,7 @@ export default function Board({ documents, location }) {
     <GridWrapper>
       {Object.entries(documents).map(([slug, doc]) => (
         <Link
-          to={`${location.pathname}/${slug}`}
+          to={`${location.pathname}/edit/${slug}`}
           key={slug}
           style={{ textDecoration: "none" }}
         >

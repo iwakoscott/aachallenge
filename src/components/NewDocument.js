@@ -6,6 +6,8 @@ import FaArrowLeft from "react-icons/lib/fa/arrow-left";
 import FaFloppy from "react-icons/lib/fa/floppy-o";
 import slugify from "slugify";
 import { handleSaveDocument } from "../actions/documents";
+import PropTypes from "prop-types";
+import { unslug } from "../utils/helper";
 
 const TextArea = styled.textarea`
   -webkit-border-radius: 0;
@@ -51,6 +53,20 @@ class NewDocument extends Component {
     title: "",
     content: ""
   };
+
+  componentDidMount() {
+    if (this.props.editMode) {
+      // if we are in editMode
+      const { slug } = this.props.match.params;
+      const { content } = this.props.documents[slug];
+      const unslugged = unslug(slug);
+
+      this.setState({
+        title: unslugged,
+        content
+      });
+    }
+  }
 
   handleTextChange = ({ target }, key) => {
     this.setState({
@@ -114,9 +130,14 @@ class NewDocument extends Component {
   }
 }
 
-function mapStateToProps({ user }) {
+NewDocument.propTypes = {
+  editMode: PropTypes.bool
+};
+
+function mapStateToProps({ user, documents }) {
   return {
-    username: user.username
+    username: user.username,
+    documents: documents.documents
   };
 }
 

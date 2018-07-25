@@ -11,9 +11,12 @@ import { connect } from "react-redux";
 
 */
 
-function PrivateRoute({ username, component: Component, ...props }) {
+function PrivateRoute({ username, component: Component, editMode, ...props }) {
   return username !== null ? (
-    <Route {...props} component={Component} />
+    <Route
+      {...props}
+      render={_props => <Component {..._props} editMode={editMode} />}
+    />
   ) : (
     <Redirect
       to={{
