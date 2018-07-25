@@ -85,7 +85,6 @@ class NewDocument extends Component {
     };
 
     dispatch(handleSaveDocument(rawData));
-    history.push("/dashboard");
   };
 
   goBack = () => this.props.history.push("/dashboard");

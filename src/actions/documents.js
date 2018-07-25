@@ -52,36 +52,44 @@ function savingDocument() {
 export function handleSaveDocument(document) {
   return (dispatch, getState) => {
     dispatch(savingDocument()); // for the sake of clearing error messages in our store
+
+    // saveDocument resolves => This means that the document is OK to be saved as original doc.
+
+    // saveDocument rejects => This means that the document already exists and we need to pivot accordingly.
+    const { username } = getState().user;
+    const encodedTitle = encodeURI(document.title);
+
     saveDocument(document)
-      .then(result => {
-        const [slug] = Object.keys(result);
-        const { user, documents } = getState();
-        const documentUpdates = result[slug];
-        const { username } = user;
-        const { documents: _documents } = documents;
-        const originalDoc = _documents[slug];
-
-        const objectToDispatch =
-          typeof originalDoc !== "undefined"
-            ? {
-                [slug]: {
-                  ...originalDoc,
-                  ...documentUpdates,
-                  owners: originalDoc.owners.includes(username)
-                    ? originalDoc.owners
-                    : [...originalDoc.owners, username]
-                }
+      .then(doc => dispatch(saveDocumentSuccess(doc)))
+      .catch(response =>
+        response.then(doc =>
+          dispatch(
+            saveDocumentSuccess({
+              [encodedTitle]: {
+                ...doc,
+                owners: doc.owners.includes(username)
+                  ? doc.owners
+                  : [...doc.owners, username],
+                lastChangeBy: username,
+                content: doc.content
               }
-            : {
-                [slug]: {
-                  ...documentUpdates,
-                  owners: [username]
-                }
-              };
-
-        dispatch(saveDocumentSuccess(objectToDispatch));
-      })
-      .catch(() => dispatch(saveDocumentFail(`Error adding document!`)));
+            })
+          )
+        )
+      )
+      .finally(() => {
+        fetch(`https://aachallengeone.now.sh/update/${encodedTitle}`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            issuer: username,
+            content: document.content
+          })
+        });
+      });
   };
 }
 

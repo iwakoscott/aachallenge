@@ -1,4 +1,3 @@
-import slugify from "slugify";
 /*
   API logic for dealing with localstorage and the aachallenge backend will be
   stored here.
@@ -41,24 +40,26 @@ export function saveDocument({ title, content, username }) {
     content
   };
 
-  const sluggedTitle = slugify(title, {
-    replacement: "-",
-    remove: /[$*_+~,.()'"!\-:@]/g,
-    lower: true
+  const encodedTitle = encodeURI(title);
+  alert(encodedTitle);
+  return new Promise((resolve, reject) => {
+    fetch(`https://aachallengeone.now.sh/read/${encodedTitle}`).then(
+      response => {
+        // Document exists
+        if (response.ok) {
+          // Document exists
+          reject(response.json());
+        } else {
+          // Document does not already exists!
+          resolve({
+            [encodedTitle]: {
+              owners: [username],
+              lastChangeBy: username,
+              content
+            }
+          });
+        }
+      }
+    );
   });
-
-  return fetch(`https://aachallengeone.now.sh/update/${sluggedTitle}`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(body)
-  }).then(() => ({
-    [sluggedTitle]: {
-      owners: [username],
-      lastChangeBy: username,
-      content
-    }
-  }));
 }

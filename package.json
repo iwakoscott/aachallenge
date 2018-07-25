@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "react": "^16.4.1",
+    "react-alert": "^4.0.4",
+    "react-alert-template-basic": "^1.0.0",
     "react-dom": "^16.4.1",
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.7",
